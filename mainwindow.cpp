@@ -9,20 +9,20 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowState(Qt::WindowFullScreen);
 
     player = new Phonon::VideoPlayer(Phonon::VideoCategory, ui->centralWidget);
-    player->setMinimumSize(1280, 800);
 
     QSize screenSize = QApplication::desktop()->screenGeometry().size();
 
-    int centerX = (int) (player->width() - (screenSize.width()/2));
-    int centerY = (int) (player->height() - (screenSize.height()/2));
+    player->setMinimumSize(screenSize.width(), screenSize.height());
+    /*int centerX = (int) (player->width() - (screenSize.width()/2));
+    int centerY = (int) (player->height() - (screenSize.height()/2));*/
 
     int posX = QApplication::desktop()->screenGeometry(QApplication::desktop()->primaryScreen()).x();
     move(posX, 0);
-    player->move(centerX, centerY-150);
+    //player->move(centerX, centerY-150);
 
     label = new QLabel(this);
     label->setMinimumSize(1280, 50);
-    label->move(centerX, ((centerY-130) + player->height()));
+    //label->move(centerX, ((centerY-130) + player->height()));
 
     QFont font;
     font.setPixelSize(20);
